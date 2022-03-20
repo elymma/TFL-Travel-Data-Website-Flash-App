@@ -3,9 +3,9 @@ from first_app import create_app
 app = create_app()
 
 
-@app.route('/')
+@app.route("/")
 def index():
-    return 'This is the home page for my_flask_app'
+    return "This is the home page for my_flask_app"
 
 
 if __name__ == '__main__':
