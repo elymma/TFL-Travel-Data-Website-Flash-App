@@ -9,7 +9,7 @@ import plotly.express as px
 
 # App styling details
 external_stylesheets = [dbc.themes.LUX]
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, routes_pathname_prefix="/dash_app/", external_stylesheets=external_stylesheets)
 background = "#F8F9F9"
 
 # Data processing and chart creation
