@@ -24,4 +24,7 @@ def create_app(config_class_name):
     from first_app.profile.routes import profile_bp
     app.register_blueprint(profile_bp)
 
+    from first_app.dash.routes import dash_bp
+    app.register_blueprint(dash_bp)
+
     return app
