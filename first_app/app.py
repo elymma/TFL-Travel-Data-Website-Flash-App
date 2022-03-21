@@ -1,11 +1,8 @@
 from first_app import create_app
+import config
 
-app = create_app()
 
-
-@app.route("/")
-def index():
-    return "This is the home page for my_flask_app"
+app = create_app(config.DevelopmentConfig)
 
 
 if __name__ == '__main__':
