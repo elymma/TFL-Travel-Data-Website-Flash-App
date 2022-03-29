@@ -1,9 +1,11 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 auth_bp = Blueprint("auth", __name__, url_prefix="/auth")
 
 
 @auth_bp.route("/")
 def index():
-    return "This is the authentication section of the web app"
+    return render_template("signup.html", title="Profile")
+
+
 
