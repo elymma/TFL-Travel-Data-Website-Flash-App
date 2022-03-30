@@ -11,4 +11,4 @@ class SignupForm(FlaskForm):
     password_repeat = PasswordField(label="Repeat Password",
                                     validators=[DataRequired("Repeat password!"), EqualTo("password", message="Entered passwords must match!")])
 
-
+# add additional elements using links in week same task 2 file

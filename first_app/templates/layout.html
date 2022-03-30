@@ -16,6 +16,17 @@
         {% include "navbar.html"  %}
     </header>
 
+{# Displays flashed messages on a page #}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
     <main>
         <div class="container">
             {# Define an area thst will bedefined for each page #}
