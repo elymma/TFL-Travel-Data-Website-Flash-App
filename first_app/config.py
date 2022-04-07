@@ -1,5 +1,5 @@
 """Flask config class."""
-from pathlib import Path
+import pathlib
 
 
 class Config(object):
@@ -7,8 +7,8 @@ class Config(object):
     DEBUG = False
     SECRET_KEY = "DRvGGWVHAq9iudKYo6Fivg"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    DATA_PATH = Path('data')
-    SQLALCHEMY_DATABASE_URI = "sqlite:///" + str(DATA_PATH.joinpath("example.sqlite"))
+    # SQLALCHEMY_DATABASE_URI = "sqlite:///" + str(DATA_PATH.joinpath("example.sqlite"))
+    SQLALCHEMY_DATABASE_URI = "sqlite:///" + str(pathlib.Path(__file__).parent.joinpath('first_app.sqlite'))
 
 
 class ProductionConfig(Config):
