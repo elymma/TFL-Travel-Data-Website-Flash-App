@@ -7,7 +7,6 @@ class Config(object):
     DEBUG = False
     SECRET_KEY = "DRvGGWVHAq9iudKYo6Fivg"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    # SQLALCHEMY_DATABASE_URI = "sqlite:///" + str(DATA_PATH.joinpath("example.sqlite"))
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + str(pathlib.Path(__file__).parent.joinpath('first_app.sqlite'))
 
 

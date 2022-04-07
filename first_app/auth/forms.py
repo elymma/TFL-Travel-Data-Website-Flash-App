@@ -1,6 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, EmailField
-from wtforms.validators import DataRequired, EqualTo, Length
+from wtforms.validators import DataRequired, EqualTo, Length, ValidationError
+
+from first_app.models import User
 
 
 class SignupForm(FlaskForm):
@@ -12,3 +14,11 @@ class SignupForm(FlaskForm):
                                     validators=[DataRequired("Repeat password!"), EqualTo("password", message="Entered passwords must match!")])
 
 # add additional elements using links in week same task 2 file
+# fix validation messages, the dont appear :(
+
+    def validate_email(self, email):
+        users = User.query.filter_by(email=email.data).first()
+        if users is not None:
+            raise ValidationError("An account is already registered for that email address")
+
+# add more custom validators from week 7 task 4
