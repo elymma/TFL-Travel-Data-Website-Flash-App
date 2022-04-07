@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% from "_formhelpers.html" import render_field %}
 
 {% block content %}
     <form method="POST" action="{{ url_for("auth.signup") }}">
@@ -10,4 +11,12 @@
         {{ form.password_repeat.label }} {{ form.password_repeat() }} <br>
         <input type="submit" value="Sign up">
     </form>
+    {# Display the form validation errors #}
+    {% for field, errors in form.errors.items() %}
+        <div class="alert alert-error">
+            {{ form[field].label }}: {{ ', '.join(errors) }}
+        </div>
+    {% endfor %}
 {% endblock %}
+
+{# make errors display #}

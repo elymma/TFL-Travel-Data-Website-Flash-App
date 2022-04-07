@@ -1,7 +1,10 @@
 from flask import Flask
 from flask_wtf.csrf import CSRFProtect
+from flask_sqlalchemy import SQLAlchemy
+
 
 csrf = CSRFProtect()
+db = SQLAlchemy()
 
 
 def create_app(config_class_name):
@@ -13,7 +16,13 @@ def create_app(config_class_name):
     app = Flask(__name__)
     app.config.from_object(config_class_name)
     csrf.init_app(app)
+    db.init_app(app)
 
+    with app.app_context():
+        from first_app.models import User
+        db.create_all()
+
+    # Blueprints
     from first_app.main.routes import main_bp
     app.register_blueprint(main_bp)
 
@@ -33,3 +42,4 @@ def create_app(config_class_name):
     app.register_blueprint(dash_bp)
 
     return app
+
