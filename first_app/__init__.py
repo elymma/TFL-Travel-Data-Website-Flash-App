@@ -1,10 +1,12 @@
 from flask import Flask
 from flask_wtf.csrf import CSRFProtect
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 
 
 csrf = CSRFProtect()
 db = SQLAlchemy()
+login_manager = LoginManager()
 
 
 def create_app(config_class_name):
@@ -17,6 +19,8 @@ def create_app(config_class_name):
     app.config.from_object(config_class_name)
     csrf.init_app(app)
     db.init_app(app)
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
 
     with app.app_context():
         from first_app.models import User
@@ -41,7 +45,6 @@ def create_app(config_class_name):
     from first_app.dash.routes import dash_bp
     app.register_blueprint(dash_bp)
 
-
-
     return app
+
 
