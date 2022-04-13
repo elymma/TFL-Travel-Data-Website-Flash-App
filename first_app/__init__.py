@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import dash
 import dash_bootstrap_components as dbc
 from flask import Flask
@@ -5,6 +7,7 @@ from flask_wtf.csrf import CSRFProtect
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_required
 from flask.helpers import get_root_path
+
 
 csrf = CSRFProtect()
 csrf._exempt_views.add('dash.dash.dispatch')
@@ -48,9 +51,6 @@ def create_app(config_class_name):
     from first_app.profile.routes import profile_bp
     app.register_blueprint(profile_bp)
 
-    from first_app.dash.routes import dash_bp
-    app.register_blueprint(dash_bp)
-
     return app
 
 
@@ -70,15 +70,15 @@ def register_dashapp(app):
 
     with app.app_context():
         dashapp.title = 'Dashboard'
-        dashapp.layout = layout.layout
+        dashapp.layout = layout
         register_callbacks(dashapp)
 
     # Protects the views with Flask-Login
-    _protect_dash_views(dashapp)
+#    _protect_dash_views(dashapp)
 
 
-def _protect_dash_views(dash_app):
-    """ Protects Dash views with Flask-Login"""
-    for view_func in dash_app.server.view_functions:
-        if view_func.startswith(dash_app.config.routes_pathname_prefix):
-            dash_app.server.view_functions[view_func] = login_required(dash_app.server.view_functions[view_func])
+# def _protect_dash_views(dash_app):
+#    """ Protects Dash views with Flask-Login"""
+#    for view_func in dash_app.server.view_functions:
+#        if view_func.startswith(dash_app.config.routes_pathname_prefix):
+#            dash_app.server.view_functions[view_func] = login_required(dash_app.server.view_functions[view_func])

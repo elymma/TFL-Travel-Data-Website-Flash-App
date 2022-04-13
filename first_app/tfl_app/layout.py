@@ -4,6 +4,7 @@ from dash import dcc
 import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
+from pathlib import Path
 
 # App styling details
 external_stylesheets = [dbc.themes.LUX]
@@ -13,7 +14,9 @@ background = "#F8F9F9"
 # Data processing and chart creation
 
 # Import data
-df = pd.read_excel("cleaned_tfl_dataset_EDIT.xlsx")
+df_file = Path(__file__).parent.joinpath("data", "cleaned_tfl_dataset_EDIT.xlsx")
+df = pd.read_excel(df_file)
+
 # Group dataset by recording period year
 df.by_year = df.groupby(df["Period ending"].map(lambda x: x.year))
 # Sum the number of journeys for each year
@@ -56,7 +59,8 @@ dropdown = [
 ]
 
 # Create app layout
-layout = html.Div(style={"backgroundColor": background}, children=[
+layout = dbc.Container(children=[
+    html.Div(style={"backgroundColor": background}, children=[
 
     dbc.Container([
         dbc.Row(
@@ -99,3 +103,6 @@ layout = html.Div(style={"backgroundColor": background}, children=[
     ])
 ])
 
+],
+    fluid=True,
+)

@@ -6,8 +6,6 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 
-from layout import df
-
 
 def register_callbacks(dash_app):
     @dash_app.callback([Output("box", "figure"),
