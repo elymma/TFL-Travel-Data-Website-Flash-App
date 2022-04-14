@@ -59,8 +59,7 @@ dropdown = [
 ]
 
 # Create app layout
-layout = dbc.Container(children=[
-    html.Div(style={"backgroundColor": background}, children=[
+layout = html.Div(style={"backgroundColor": background}, children=[
 
     dbc.Container([
         dbc.Row(
@@ -103,6 +102,3 @@ layout = dbc.Container(children=[
     ])
 ])
 
-],
-    fluid=True,
-)
