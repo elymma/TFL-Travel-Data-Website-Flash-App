@@ -73,12 +73,12 @@ def register_dashapp(app):
         dashapp.layout = layout
         register_callbacks(dashapp)
 
-    # Protects the views with Flask-Login
-#    _protect_dash_views(dashapp)
+        # Protects the views with Flask-Login
+        _protect_dash_views(dashapp)
 
 
-# def _protect_dash_views(dash_app):
-#    """ Protects Dash views with Flask-Login"""
-#    for view_func in dash_app.server.view_functions:
-#        if view_func.startswith(dash_app.config.routes_pathname_prefix):
-#            dash_app.server.view_functions[view_func] = login_required(dash_app.server.view_functions[view_func])
+def _protect_dash_views(dash_app):
+    """ Protects Dash views with Flask-Login"""
+    for view_func in dash_app.server.view_functions:
+        if view_func.startswith(dash_app.config.routes_pathname_prefix):
+            dash_app.server.view_functions[view_func] = login_required(dash_app.server.view_functions[view_func])

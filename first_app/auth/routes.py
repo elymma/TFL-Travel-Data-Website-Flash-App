@@ -5,7 +5,7 @@ from datetime import timedelta
 from flask_login import login_user, logout_user, login_required
 
 from first_app import db
-from first_app.auth.forms import SignupForm
+from first_app.auth.forms import SignupForm, LoginForm
 from first_app.models import User
 from first_app import login_manager
 
@@ -35,7 +35,7 @@ def signup():
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
-    login_form = LoginForm()
+    login_form = LoginForm(request.form)
     if login_form.validate_on_submit():
         user = User.query.filter_by(email=login_form.email.data).first()
         login_user(user, remember=login_form.remember.data, duration=timedelta(minutes=1))
