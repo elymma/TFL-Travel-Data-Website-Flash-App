@@ -6,6 +6,8 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 
+from .layout import df
+
 
 def register_callbacks(dash_app):
     @dash_app.callback([Output("box", "figure"),
@@ -19,7 +21,8 @@ def register_callbacks(dash_app):
         # Select the data for chosen year
         if type(year_select) != int:
             # For when there is a list of year values
-            df.chosen_year = df.chosen_year[df.chosen_year["Period ending"].dt.year.isin(year_select)]
+            df.chosen_year = df.chosen_year[
+                df.chosen_year["Period ending"].dt.year.isin(year_select)]
         else:
             # For when there is only one year value
             df.chosen_year = df.chosen_year[df.chosen_year["Period ending"].dt.year == year_select]
