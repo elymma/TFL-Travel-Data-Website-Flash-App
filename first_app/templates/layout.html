@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
-
     {# Variable for each page #}
     <title>{{title}}</title>
 </head>
@@ -27,20 +24,12 @@
     {% endif %}
 {% endwith %}
 </div>
-
     <main>
         <div class="container">
             {# Define an area thst will bedefined for each page #}
-            {% block content %}
-
-
-            {% endblock %}
-
+            {% block content %}{% endblock %}
         </div>
-
     </main>
-
-
 <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}" defer></script>
 </body>
 </html>

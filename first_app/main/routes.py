@@ -9,7 +9,7 @@ main_bp = Blueprint("main", __name__)
 def index():
     if not current_user.is_anonymous:
         name = current_user.first_name
-        flash(f"Hello {name}. ")
+        flash(f"Hello {name}! ")
 
     return render_template("index.html", title="Home page")
 

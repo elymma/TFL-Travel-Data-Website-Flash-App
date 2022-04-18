@@ -16,15 +16,12 @@ auth_bp = Blueprint("auth", __name__, url_prefix="/signup")
 def signup():
     form = SignupForm(request.form)
     if form.validate_on_submit():
-        # name = form.first_name.data
-        # flash(f"Congrats {name}, you are signed up to the TFL Travel Dashboard!")
-        # return redirect(url_for("main.index"))
         user = User(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data)
         user.set_password(form.password.data)
         try:
             db.session.add(user)
             db.session.commit()
-            flash(f"Hello, {user.first_name} {user.last_name}. You are signed up.")
+            flash(f"Congrats, {user.first_name} {user.last_name}. You are signed up to the TFL Travel Dashboard!")
         except IntegrityError:
             db.session.rollback()
             flash(f"Error, unable to register {form.email.data}. ", "error")
