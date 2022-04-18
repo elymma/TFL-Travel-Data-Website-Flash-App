@@ -2,17 +2,22 @@ from pathlib import Path
 
 import dash
 import dash_bootstrap_components as dbc
+# import flask_images
 from flask import Flask
 from flask_wtf.csrf import CSRFProtect
 from flask_sqlalchemy import SQLAlchemy
+# from flask_uploads import UploadSet, IMAGES, configure_uploads
 from flask_login import LoginManager, login_required
 from flask.helpers import get_root_path
+# from flask_images import resized_img_src
 
 
 csrf = CSRFProtect()
 csrf._exempt_views.add('dash.dash.dispatch')
 db = SQLAlchemy()
 login_manager = LoginManager()
+# photos = UploadSet("photos", IMAGES)
+
 
 
 def create_app(config_class_name):
@@ -30,6 +35,8 @@ def create_app(config_class_name):
     db.init_app(app)
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
+
+
 
     with app.app_context():
         from first_app.models import User

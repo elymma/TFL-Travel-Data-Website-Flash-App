@@ -15,29 +15,31 @@
         {# Use Jinja template navbar.html to create a navigation bar #}
         {% include "navbar.html"  %}
     </header>
-
+<div id="flash-messages">
 {# Displays flashed messages on a page #}
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         <ul>
         {% for message in messages %}
-            <li>{{ message }}</li>
+            <p class="alert alert-info" role="alert">{{ message }}</p>
         {% endfor %}
         </ul>
     {% endif %}
 {% endwith %}
+</div>
 
     <main>
         <div class="container">
             {# Define an area thst will bedefined for each page #}
             {% block content %}
 
-            {% endblock %}
-        </div>
-    </main>
-    <footer>
 
-    </footer>
+            {% endblock %}
+
+        </div>
+
+    </main>
+
 
 <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}" defer></script>
 </body>

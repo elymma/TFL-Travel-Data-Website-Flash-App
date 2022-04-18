@@ -40,11 +40,6 @@ header = [
         ), lg=2),
         dbc.Col(html.Div([
             html.H1("TFL TRAVEL DASHBOARD")]), width={"size": 6}),
-        dbc.Col(html.Div([
-            dbc.Button("message", outline=True, color="secondary"),
-            dbc.Button("profile", outline=True, color="secondary"),
-            dbc.Button("log out", outline=True, color="secondary"),
-        ]), lg=4),
     ])
 ]
 

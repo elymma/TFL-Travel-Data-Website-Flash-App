@@ -2,5 +2,10 @@
 
 {% block content %}
     <h3>{{ title }}</h3>
-    <p>home page vibesss</p>
+    <p class="lead"> Welcome to the TFL Travel Dashboard! <br> Here you can log in and view chart visualisations showing usage across the
+        TFL travel network. <br> The included modes are xy. Please note that you must be logged in to view the chart
+        visualisations. <br> Thank you for choosing Mensah Visualisations! </p>
+    <div>
+        <img src="{{ url_for("static", filename="images/tubemap.gif")}}" alt="tfl map" class="img-fluid mw-100 mx-auto d-block">
+    </div>
 {% endblock %}
