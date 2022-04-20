@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, flash, jsonify
+from flask import Blueprint, render_template, flash
 from flask_login import current_user
 import json
 
@@ -13,4 +13,7 @@ def index():
                         "l_name": current_user.last_name,
                         "e_mail": current_user.email}
         flash(f"Hello {name} here you can view your profile details.")
+    else:
+        user_details = {}
+
     return render_template("profile.html", res=json.dumps(user_details), title="Profile")

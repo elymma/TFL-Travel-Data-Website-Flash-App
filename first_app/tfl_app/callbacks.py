@@ -1,9 +1,5 @@
-import json
-import dash
 from dash import html, Output, Input
-from dash import dcc
 import dash_bootstrap_components as dbc
-import pandas as pd
 import plotly.express as px
 
 from .layout import df

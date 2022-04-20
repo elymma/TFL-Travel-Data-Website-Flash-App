@@ -16,7 +16,8 @@ auth_bp = Blueprint("auth", __name__, url_prefix="/signup")
 def signup():
     signup_form = SignupForm(request.form)
     if signup_form.validate_on_submit():
-        user = User(first_name=signup_form.first_name.data, last_name=signup_form.last_name.data, email=signup_form.email.data)
+        user = User(first_name=signup_form.first_name.data, last_name=signup_form.last_name.data,
+                    email=signup_form.email.data)
         user.set_password(signup_form.password.data)
         try:
             db.session.add(user)
@@ -79,6 +80,3 @@ def get_safe_redirect():
     if url and is_safe_url(url):
         return url
     return "/"
-
-
-

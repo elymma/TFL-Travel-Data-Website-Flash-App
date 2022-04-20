@@ -7,23 +7,20 @@ class Config(object):
     DEBUG = False
     SECRET_KEY = "DRvGGWVHAq9iudKYo6Fivg"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = "sqlite:///" + str(pathlib.Path(__file__).parent.joinpath('first_app.sqlite'))
+    SQLALCHEMY_DATABASE_URI = "sqlite:///" + str(pathlib.Path(__file__).parent.joinpath("first_app.sqlite"))
 
 
 class ProductionConfig(Config):
-    ENV = 'production'
+    ENV = "production"
 
 
 class DevelopmentConfig(Config):
-    ENV = 'development'
+    ENV = "development"
     DEBUG = True
     SQLALCHEMY_ECH0 = True
 
 
 class TestingConfig(Config):
-    ENV = 'testing'
+    ENV = "testing"
     TESTING = True
     SQLALCHEMY_ECH0 = True
-
-
-

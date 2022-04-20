@@ -12,4 +12,3 @@ def index():
         flash(f"Hello {name}! ")
 
     return render_template("index.html", title="Home page")
-

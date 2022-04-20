@@ -14,7 +14,7 @@
     {# Display the form validation errors #}
     {% for field, errors in form.errors.items() %}
         <div class="alert alert-error">
-            {{ form[field].label }}: {{ ', '.join(errors) }}
+            {{ form[field].label }}: {{ ", ".join(errors) }}
         </div>
     {% endfor %}
 {% endblock %}

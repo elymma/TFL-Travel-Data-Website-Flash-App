@@ -1,5 +1,5 @@
 import dash
-from dash import html, Output, Input
+from dash import html
 from dash import dcc
 import dash_bootstrap_components as dbc
 import pandas as pd
@@ -96,4 +96,3 @@ layout = html.Div(style={"backgroundColor": background}, children=[
         )
     ])
 ])
-
