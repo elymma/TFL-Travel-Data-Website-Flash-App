@@ -20,16 +20,10 @@ class SignupForm(FlaskForm):
                                                                                           message="Entered passwords"
                                                                                                   "must match!")])
 
-    # add additional elements using links in week same task 2 file
-    # fix validation messages, the dont appear :(
-
     def validate_email(self, email):
         users = User.query.filter_by(email=email.data).first()
         if users is not None:
             raise ValidationError("An account is already registered for that email address")
-
-
-# add more custom validators from week 7 task 4
 
 
 class LoginForm(FlaskForm):

@@ -2,5 +2,12 @@
 
 {% block content %}
     <h3>{{ title }}</h3>
-    <p class="lead">here's your profile! make it cutie x <br> {{ res }}</p>
+    <p class="lead">Here's your profile! </p>
+    <p class="lead">If you are logged in, your account details will be shown below.</p>
+    <div class="container">
+        <h5>First Name:</h5><p class="lead">{{ profile_details["First Name"]}}</p>
+        <h5>Last Name:</h5><p class="lead">{{ profile_details["Last Name"] }}</p>
+        <h5>Email Address: </h5><p class="lead">{{ profile_details["Email Address"] }}</p>
+    </div>
+
 {% endblock %}

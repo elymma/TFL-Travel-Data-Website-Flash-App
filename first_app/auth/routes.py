@@ -62,7 +62,7 @@ def load_user(user_id):
 @login_manager.unauthorized_handler
 def unauthorized():
     """Redirect unauthorized users to Login page."""
-    flash("Oops! You must be logged in to view that page.")
+    flash("Oops! You must be logged in to view the TFL Travel Dashbaord.")
     return redirect(url_for("auth.login"))
 
 
